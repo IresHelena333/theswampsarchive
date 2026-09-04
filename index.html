@@ -3,107 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Swamp Archive</title>
+    <title>Enciclopédia do Pântano | Mamíferos</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <div class="logo-imagem">
-                <!-- Usando o arquivo logo.png da pasta imagens -->
-                <img src="imagens/logo.png" alt="Logo The Swamp Archive">
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <svg viewBox="0 0 64 64" width="48" height="48">
+                    <circle cx="32" cy="32" r="30" fill="#2a4a22" stroke="#7a9e5a" stroke-width="2"/>
+                    <path d="M20 18h24v28H20z" fill="#e8f0d8" opacity="0.9"/>
+                    <path d="M22 20h10v24H22z" fill="#d4e4c0"/>
+                    <path d="M32 20h10v24H32z" fill="#c8dcb0"/>
+                    <path d="M28 14c0-4 8-4 8 0" fill="none" stroke="#5a8a3a" stroke-width="2"/>
+                    <path d="M18 40c4-8 12-6 16-2s8 4 12-2" fill="none" stroke="#5a8a3a" stroke-width="1.5"/>
+                </svg>
             </div>
             <div class="logo-text">
-                <h1>THE SWAMP</h1>
-                <span>ARCHIVE</span>
+                <span class="logo-title">ENCICLOPÉDIA</span>
+                <span class="logo-subtitle">DO PÂNTANO</span>
             </div>
         </div>
-
-        <nav>
-            <ul>
-                <!-- Ícone de Bife (contorno) -->
-                <li><a href="#" class="active">
-                    <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 5c-2 1-3 3.5-2 6 1 2.5 4 4 8 4h2c2.5 0 4-1.5 4-3s-1.5-3-4-3h-2c-2 0-3-1-3-2.5S7 5 6 5z"/>
-                        <circle cx="10" cy="10" r="1.5"/>
-                        <path d="M14 13c4 0 7-2 7-5s-3-5-7-5c-3 0-5.5 1.5-6.5 3.5"/>
-                    </svg>
-                    Mamíferos</a></li>
-                
-                <li><a href="#">
-                    <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
-                        <line x1="16" y1="8" x2="2" y2="22"/>
-                        <line x1="17.5" y1="15" x2="9" y2="15"/>
-                    </svg>
-                    Aves</a></li>
-                
-                <li><a href="#">
-                    <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                    </svg>
-                    Répteis/Anfíbios</a></li>
-                
-                <li><a href="#"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Sobre Nós</a></li>
-                
-                <li><a href="#"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Nossa Loja</a></li>
-            </ul>
+        <nav class="nav">
+            <a href="#" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                INÍCIO
+            </a>
+            <a href="#" class="nav-item active">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 3 2 5 4 7 1 1 2 2 3 3 1-1 2-2 3-3 2-2 4-4 4-7 0-4-3-7-7-7z"/><circle cx="9" cy="9" r="1.5"/><circle cx="15" cy="9" r="1.5"/></svg>
+                ANIMAIS
+            </a>
+            <a href="#" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L8 8h8L12 2z"/><path d="M8 8c-2 4-2 8 0 12"/><path d="M16 8c2 4 2 8 0 12"/><path d="M12 8v12"/></svg>
+                PLANTAS
+            </a>
+            <a href="#" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18h18"/><path d="M5 18V12l3-4 4 2 3-5 4 3v10"/></svg>
+                HABITAT
+            </a>
+            <a href="#" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                SOBRE NÓS
+            </a>
+            <a href="#" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                RECURSOS
+            </a>
+            <a href="#" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                CONTATO
+            </a>
         </nav>
     </header>
 
-    <main>
-        <div class="grid-layout">
-            <div class="card card-foto-onca">
-                <div class="card-imagem">
-                    <!-- Usando o arquivo onca_pintada.jpg -->
-                    <img src="imagens/onca_pintada.jpg" alt="Onça-pintada">
-                </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="bg-decor left-decor"></div>
+        <div class="bg-decor right-decor"></div>
+
+        <div class="cards-grid">
+            <!-- Onça Image -->
+            <div class="card card-image jaguar-card">
+                <img src="https://github.com/IresHelena333/theswampsarchive/blob/main/imagens/onca_pintada.jpg?raw=true" alt="Onça-pintada" class="animal-img">
             </div>
 
-            <div class="card card-texto-onca card-com-matos">
-                <div class="card-texto">
-                    <div class="titulo-com-icone">
-                        <div class="icone-folha"><svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
-                        <h2>ONÇA-PINTADA</h2>
-                    </div>
-                    <p>A onça-pintada é o maior felino das Américas e um dos principais predadores do Pantanal. Possui uma mordida poderosa e excelente habilidade de natação, sendo capaz de caçar tanto em terra quanto na água.</p>
+            <!-- Onça Info -->
+            <div class="card card-info onca-info">
+                <div class="card-header">
+                    <span class="leaf-icon">🌿</span>
+                    <h2>ONÇA-PINTADA</h2>
                 </div>
+                <p>
+                    A onça-pintada é um grande felino encontrado em diferentes regiões da América do Sul e é conhecida por sua força e habilidade como predadora. No Pantanal, vive principalmente em matas ciliares, margens de rios e florestas densas. É carnívora e se alimenta de animais como capivaras, jacarés, veados e queixadas.
+                </p>
             </div>
 
-            <div class="card card-curiosidades">
-                <div class="curiosidades-header">
-                    <div class="icone-busca"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+            <!-- Fato Curioso -->
+            <div class="card card-curiosity">
+                <div class="card-header curiosity-header">
+                    <span class="search-icon">🔍</span>
                     <h2>FATO CURIOSO</h2>
                 </div>
-                <div class="curiosidades-body">
-                    <div class="icone-pata"><svg viewBox="0 0 24 24" class="svg-icon-verde"><path d="M12 16c-2.5 0-4.5 2-4.5 4.5S9.5 25 12 25s4.5-2 4.5-4.5S14.5 16 12 16zm-5.5-3C4.5 13 2 15.5 2 18.5S4.5 24 6.5 24s4.5-2.5 4.5-5.5S8.5 13 6.5 13zm11 0c-2 0-4.5 2.5-4.5 5.5S15.5 24 17.5 24s4.5-2.5 4.5-5.5S19.5 13 17.5 13zM12 4c-3 0-5.5 2.5-5.5 5.5S9 15 12 15s5.5-2.5 5.5-5.5S15 4 12 4zM5.5 7C3.5 7 2 8.5 2 10.5S3.5 14 5.5 14 9 12.5 9 10.5 7.5 7 5.5 7zm13 0c-2 0-3.5 1.5-3.5 3.5s1.5 3.5 3.5 3.5 3.5-1.5 3.5-3.5S20.5 7 18.5 7z"/></svg></div>
-                    <p>Tanto a onça quanto a ariranha são excelentes nadadores e dependem das águas do pântano para sobreviver.</p>
-                </div>
-                <div class="imagem-fundo-curiosidades">
-                    <!-- Usando o arquivo plantas.png -->
-                    <img src="imagens/plantas.png" alt="Pântano">
+                <div class="curiosity-content">
+                    <span class="paw-icon">🐾</span>
+                    <p>
+                        Onça-pintada e ariranha: apesar de serem animais muito diferentes, os dois estão bastante ligados aos ambientes aquáticos. A onça-pintada é uma excelente nadadora e pode caçar dentro da água, enquanto a ariranha passa grande parte de sua vida nos rios.
+                    </p>
                 </div>
             </div>
 
-            <div class="card card-texto-ariranha card-com-matos">
-                <div class="card-texto">
-                    <div class="titulo-com-icone">
-                        <div class="icone-folha"><svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
-                        <h2>ARIRANHA</h2>
-                    </div>
-                    <p>A ariranha é a maior espécie de lontra do mundo e vive em grupos familiares. É muito ágil na água e se alimenta principalmente de peixes, desempenhando um papel essencial no equilíbrio do ecossistema.</p>
+            <!-- Ariranha Info -->
+            <div class="card card-info ariranha-info">
+                <div class="card-header">
+                    <span class="leaf-icon">🌿</span>
+                    <h2>ARIRANHA</h2>
                 </div>
+                <p>
+                    A ariranha é um mamífero aquático muito sociável, conhecido por viver em grupos e passar grande parte do tempo na água. Habita rios calmos, corixos, lagos e margens onde constrói suas tocas. Sua alimentação é principalmente baseada em peixes, como traíras e piranhas.
+                </p>
             </div>
 
-            <div class="card card-foto-ariranha">
-                <div class="card-imagem">
-                    <!-- Usando o arquivo ariranha.jpg -->
-                    <img src="imagens/ariranha.jpg" alt="Ariranha">
-                </div>
+            <!-- Ariranha Image -->
+            <div class="card card-image ariranha-card">
+                <img src="https://github.com/IresHelena333/theswampsarchive/blob/main/imagens/ariranha.jpg?raw=true" alt="Ariranha" class="animal-img">
             </div>
         </div>
-    </main>
 
+        <!-- Footer -->
+        <div class="footer-banner">
+            <span class="banner-icon">🌿</span>
+            <p>Explore o Pantanal e descubra a incrível biodiversidade que mantém este ecossistema único e essencial para o planeta.</p>
+        </div>
+    </main>
 </body>
 </html>
