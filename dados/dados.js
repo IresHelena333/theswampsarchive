@@ -1,6 +1,3 @@
-// ==========================================
-// DADOS DOS ANIMAIS
-// ==========================================
 const dadosAnimais = {
     mamiferos: [
         { nome: "Onça-pintada", imagem: "images/mamifero/onca_pintada.jpg", texto: "A onça-pintada é um grande felino encontrado em diferentes regiões da América do Sul e é conhecida por sua força e habilidade como predadora. No Pantanal, vive principalmente em matas ciliares, margens de rios e florestas densas. É carnívora e se alimenta de animais como capivaras, jacarés, veados e queixadas.", curiosidade: "Onça-pintada e ariranha: apesar de serem animais muito diferentes, os dois estão bastante ligados aos ambientes aquáticos. A onça-pintada é uma excelente nadadora e pode caçar dentro da água, enquanto a ariranha passa grande parte de sua vida nos rios." },
@@ -24,6 +21,7 @@ const dadosAnimais = {
         { nome: "Veado-catingueiro", imagem: "images/mamifero/veado_catingueiro.jpg", texto: "O veado-catingueiro é um pequeno cervídeo que costuma ser discreto e evita locais muito abertos. Habita florestas secundárias, cerrados e capoeiras secas. Alimenta-se de folhas, ramos e frutos caídos, sendo considerado herbívoro e frugívoro.", curiosidade: "Gato-mourisco e veado-catingueiro: esses animais podem ocupar áreas de cerrado e vegetação mais seca." },
         { nome: "Tatu-galinha", imagem: "images/mamifero/tatu_galinha.jpg", texto: "O tatu-galinha é um mamífero protegido por uma carapaça e conhecido por sua capacidade de cavar. Vive em campos, savanas e bordas de matas. Sua alimentação inclui principalmente insetos, larvas e pequenos invertebrados, mas também pode consumir frutos.", curiosidade: "Tatu-canastra e tatu-galinha: ambos possuem carapaça e são excelentes escavadores." }
     ],
+
     aves: [
         { nome: "Tuiuiú", imagem: "images/aves/tuiuiu.jpg", texto: "O tuiuiú é uma das aves mais conhecidas do Pantanal e está muito associado às paisagens alagadas da região. Vive em lagoas temporárias, campos alagados e costuma construir seus ninhos em árvores altas. Alimenta-se de peixes, moluscos, anfíbios, répteis e insetos.", curiosidade: "Tuiuiú e arara-azul-grande: as duas aves são símbolos muito conhecidos do Pantanal. O tuiuiú está fortemente associado às áreas alagadas, enquanto a arara-azul depende das palmeiras para obter grande parte de seu alimento." },
         { nome: "Arara-azul-grande", imagem: "images/aves/arara_azul_grande.jpg", texto: "A arara-azul-grande é uma ave de grande porte, conhecida por sua plumagem azul intensa e seu forte bico. Vive principalmente em matas de galeria e regiões com palmeiras. Sua alimentação é especializada em frutos e castanhas de palmeiras, como acuri e bocaiúva.", curiosidade: "Tuiuiú e arara-azul-grande: as duas aves são símbolos muito conhecidos do Pantanal. A arara-azul depende das palmeiras para obter grande parte de seu alimento." },
@@ -46,7 +44,8 @@ const dadosAnimais = {
         { nome: "Cabeça-seca", imagem: "images/aves/cabeca_seca.jpg", texto: "A cabeça-seca é uma ave pernalta que costuma formar grandes grupos em áreas de água rasa. Vive em lagoas temporárias e regiões alagadas, principalmente durante períodos de seca. Alimenta-se de peixes, anfíbios e crustáceos, procurando suas presas com o bico dentro da água e do lodo.", curiosidade: "Cabeça-seca e talha-mar: as duas são aves que dependem de ambientes aquáticos para se alimentar. A cabeça-seca procura peixes e outros animais em águas rasas usando o bico, enquanto o talha-mar captura pequenos peixes voando rente à superfície da água." },
         { nome: "Talha-mar", imagem: "images/aves/talha_mar.jpg", texto: "O talha-mar é uma ave aquática facilmente reconhecida pelo formato incomum de seu bico. Vive principalmente em grandes rios e praias de areia e costuma voar muito próximo da superfície da água. Alimenta-se de pequenos peixes, capturados enquanto corta a água com a parte inferior do bico.", curiosidade: "Cabeça-seca e talha-mar: as duas são aves que dependem de ambientes aquáticos para se alimentar. O talha-mar captura pequenos peixes voando rente à superfície da água." }
     ],
-    repteis: [
+
+        repteis: [
         { nome: "Jacaré-do-pantanal", imagem: "images/repteis_anfibios/jacare_do_pantanal.jpg", texto: "O jacaré-do-pantanal é um réptil muito comum nas áreas alagadas do Pantanal e passa grande parte da vida próximo à água. Vive em rios, corixos e lagoas permanentes ou temporárias. É carnívoro e piscívoro, alimentando-se de peixes, moluscos, aves e pequenos mamíferos.", curiosidade: "Jacaré-do-pantanal e sucuri-amarela: os dois são grandes predadores dos ambientes aquáticos do Pantanal. Apesar disso, podem ocupar posições diferentes na cadeia alimentar e até competir por algumas presas." },
         { nome: "Sucuri-amarela", imagem: "images/repteis_anfibios/sucuri_amarela.jpg", texto: "A sucuri-amarela é uma grande serpente semiaquática que passa bastante tempo dentro ou próxima da água. Habita brejos, pântanos, capinzais inundados e áreas de águas rasas. É carnívora e captura aves aquáticas, peixes, jacarés e pequenos mamíferos.", curiosidade: "Jacaré-do-pantanal e sucuri-amarela: os dois são grandes predadores dos ambientes aquáticos do Pantanal." },
         { nome: "Jiboia-constritora", imagem: "images/repteis_anfibios/jiboia_constritora.jpg", texto: "A jiboia-constritora é uma serpente conhecida por capturar suas presas por constrição. Pode viver em árvores de matas ciliares, cerrados e áreas mais secas. Alimenta-se de aves, lagartos e pequenos roedores.", curiosidade: "Jiboia-constritora e cágado-de-barbicha: enquanto a jiboia pode utilizar árvores e áreas terrestres para caçar, o cágado é muito mais ligado à água. Os dois são predadores que capturam animais menores para se alimentar." },
@@ -69,86 +68,3 @@ const dadosAnimais = {
         { nome: "Jacaretinga", imagem: "images/repteis_anfibios/jacaretinga.jpg", texto: "O jacaretinga é um pequeno crocodiliano que prefere ambientes de água doce calmos e rasos. Vive em canais fluviais menores e áreas de águas tranquilas. É piscívoro e carnívoro, alimentando-se de pequenos peixes, caranguejos e insetos.", curiosidade: "Perereca-assobiadora e jacaretinga: as duas dependem de ambientes que possuem água, mas de formas diferentes. O jacaretinga permanece associado a ambientes de água doce mais permanentes." }
     ]
 };
-
-// ==========================================
-// FUNÇÃO PARA CRIAR OS CARDS (FOTO + TEXTO EM ZIG-ZAG)
-// ==========================================
-function criarCards(categoria, containerId) {
-    const container = document.getElementById(containerId);
-    const animais = dadosAnimais[categoria];
-
-    // Se a pasta da imagem não existir, mostra um espaço reservado
-    const pastaBase = categoria === 'mamiferos' ? 'images/mamifero' : (categoria === 'aves' ? 'images/aves' : 'images/repteis_anfibios');
-    
-    animais.forEach((animal) => {
-        const caminhoImagem = `${pastaBase}/${animal.imagem}`;
-        const imagemHTML = `<img src="${caminhoImagem}" alt="${animal.nome}" onerror="this.parentElement.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; background:#d4d9bd; color:#3d4d36; font-weight:bold;\'>Imagem em breve</div>'">`;
-
-        const cardHTML = `
-            <div class="card-animal-zigzag" onclick="atualizarCuriosidade('${animal.nome}', '${animal.curiosidade.replace(/'/g, "\\'")}')">
-                <div class="foto-col">
-                    <div class="card-imagem">${imagemHTML}</div>
-                </div>
-                <div class="texto-col">
-                    <div class="titulo-com-icone">
-                        <div class="icone-folha">
-                            <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
-                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-                            </svg>
-                        </div>
-                        <h3>${animal.nome}</h3>
-                    </div>
-                    <p>${animal.texto}</p>
-                </div>
-            </div>
-        `;
-
-        container.innerHTML += cardHTML;
-    });
-}
-
-// ==========================================
-// FUNÇÃO PARA ATUALIZAR A CURIOSIDADE NA COLUNA DIREITA
-// ==========================================
-function atualizarCuriosidade(nome, curiosidade) {
-    const curiosidadeTexto = document.getElementById('curiosidade-fixa-texto');
-    curiosidadeTexto.innerHTML = `
-        <h4 style="color: var(--verde-escuro); font-size: 20px; margin-bottom: 10px; border-bottom: 2px solid var(--verde-medio); padding-bottom: 5px;">${nome}</h4>
-        <p>${curiosidade}</p>
-    `;
-}
-
-// ==========================================
-// INICIALIZAÇÃO E NAVEGAÇÃO
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Carrega os cards
-    criarCards('mamiferos', 'container-mamiferos');
-    criarCards('aves', 'container-aves');
-    criarCards('repteis', 'container-repteis');
-
-    // Lógica de troca de telas
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.content-section');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-
-            const targetId = this.getAttribute('data-target');
-
-            sections.forEach(section => section.classList.remove('active-section'));
-
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active-section');
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    });
-});

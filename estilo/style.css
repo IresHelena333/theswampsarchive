@@ -10,10 +10,6 @@
     --branco: #ffffff;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -53,7 +49,7 @@ header::after {
     right: 0;
     width: 250px;
     height: 100%;
-    background-image: url('images/decoração/elemento_01.png');
+    background-image: url('../parte_funcional/images/decoração/elemento_01.png');
     background-size: 900px auto;
     background-position: 92% 0%;
     background-repeat: no-repeat;
@@ -85,19 +81,16 @@ header::after {
     object-fit: cover;
 }
 
-/* TÍTULO: DEGRADÊ VERTICAL, MESMO TAMANHO E UMA LINHA */
 .logo-text {
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    font-family: 'Comic Neue', cursive;
     background: linear-gradient(180deg, #305955 0%, #345930 50%, #465930 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    font-family: 'Comic Neue', cursive;
     font-size: 32px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .logo-text h1,
@@ -162,19 +155,16 @@ main {
     position: relative;
 }
 
-/* Layout Principal de Duas Colunas */
 .main-layout {
     display: flex;
     gap: 30px;
     align-items: flex-start;
 }
 
-/* Coluna de Conteúdo (Foto + Texto) */
 .content-column {
     flex: 3.5;
 }
 
-/* Coluna Fixa de Curiosidades (Direita) */
 .curiosities-column {
     flex: 1.5;
     position: sticky;
@@ -189,8 +179,7 @@ main {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    height: auto;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .curiosidades-header {
@@ -221,9 +210,9 @@ main {
 }
 
 .curiosidade-fixa-body {
-    padding: 10px 5px;
     position: relative;
     z-index: 2;
+    padding: 10px 5px;
 }
 
 .curiosidade-fixa-body p {
@@ -233,14 +222,13 @@ main {
     color: #2c3e2c;
 }
 
-/* Fundo de plantas da coluna direita */
 .decoracao-coluna {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 250px;
-    background-image: url('images/decoração/elemento_03.png');
+    background-image: url('../parte_funcional/images/decoração/elemento_03.png');
     background-size: cover;
     background-position: bottom;
     opacity: 0.4;
@@ -250,7 +238,6 @@ main {
     filter: blur(1px) brightness(0.9);
 }
 
-/* Esconde/Mostra seções */
 .content-section {
     display: none;
     animation: fadeIn 0.5s ease;
@@ -276,7 +263,6 @@ main {
     text-align: center;
 }
 
-/* Cards de Animais em Zig-Zag (Foto + Texto) */
 .animal-list {
     display: flex;
     flex-direction: column;
@@ -287,7 +273,6 @@ main {
     display: flex;
     gap: 20px;
     align-items: center;
-    cursor: pointer;
 }
 
 .card-animal-zigzag:nth-child(even) {
@@ -331,7 +316,7 @@ main {
     right: -10px;
     width: 150px;
     height: 150px;
-    background-image: url('images/decoração/elemento_02.png');
+    background-image: url('../parte_funcional/images/decoração/elemento_02.png');
     background-size: cover;
     opacity: 0.3;
     z-index: 1;
@@ -375,6 +360,24 @@ main {
     color: #2c3e2c;
     position: relative;
     z-index: 2;
+}
+
+.curiosidade-dupla {
+    background-color: #d4d9bd;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 20px;
+    border: 2px dashed var(--verde-medio);
+    position: relative;
+    z-index: 2;
+}
+
+.curiosidade-dupla strong {
+    font-family: 'Merriweather Sans', sans-serif;
+    color: var(--verde-escuro);
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
 }
 
 .info-box {

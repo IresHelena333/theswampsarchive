@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Swamp Archive</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../estilo/style.css">
 </head>
 <body>
 
@@ -44,31 +44,23 @@
     </header>
 
     <main>
-        <!-- Layout Principal: Conteúdo (Esquerda) + Curiosidades Fixas (Direita) -->
         <div class="main-layout">
-            
-            <!-- Coluna de Conteúdo (Foto + Texto em Zig-Zag) -->
             <div class="content-column">
-                
-                <!-- Seção: MAMÍFEROS -->
                 <section id="mamiferos" class="content-section active-section">
                     <h2 class="titulo-secao">Mamíferos do Pantanal</h2>
                     <div class="animal-list" id="container-mamiferos"></div>
                 </section>
 
-                <!-- Seção: AVES -->
                 <section id="aves" class="content-section">
                     <h2 class="titulo-secao">Aves do Pantanal</h2>
                     <div class="animal-list" id="container-aves"></div>
                 </section>
 
-                <!-- Seção: RÉPTEIS -->
                 <section id="repteis" class="content-section">
                     <h2 class="titulo-secao">Répteis e Anfíbios do Pantanal</h2>
                     <div class="animal-list" id="container-repteis"></div>
                 </section>
 
-                <!-- Seção: SOBRE NÓS -->
                 <section id="sobre" class="content-section">
                     <h2 class="titulo-secao">Sobre Nós</h2>
                     <div class="info-box">
@@ -77,7 +69,6 @@
                     </div>
                 </section>
 
-                <!-- Seção: NOSSA LOJA -->
                 <section id="loja" class="content-section">
                     <h2 class="titulo-secao">Nossa Loja</h2>
                     <div class="info-box">
@@ -87,25 +78,22 @@
                 </section>
             </div>
 
-            <!-- Coluna Fixa de Curiosidades (Lado Direito) -->
             <aside class="curiosities-column">
                 <div class="card-curiosidade-fixa">
                     <div class="curiosidades-header">
                         <div class="icone-busca"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
                         <h2>FATO CURIOSO</h2>
                     </div>
-                    <div class="curiosidade-fixa-body" id="curiosidade-fixa-texto">
-                        <p>Selecione um animal abaixo para ver sua curiosidade aqui.</p>
+                    <div class="curiosidade-fixa-body">
+                        <p>Explore as curiosidades únicas dos animais do Pantanal, navegando pelas categorias abaixo.</p>
                     </div>
-                    <!-- Fundo de plantas na coluna direita -->
                     <div class="decoracao-coluna"></div>
                 </div>
             </aside>
-
         </div>
     </main>
 
-    <script src="dados.js"></script>
+    <script src="../dados/dados.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
