@@ -11,99 +11,101 @@
     <header>
         <div class="logo">
             <div class="logo-imagem">
-                <!-- Usando o arquivo logo.png da pasta imagens -->
-                <img src="imagens/logo.png" alt="Logo The Swamp Archive">
+                <img src="images/decoração/logo.png" alt="Logo The Swamp Archive" onerror="this.style.display='none'">
             </div>
             <div class="logo-text">
-                <h1>THE SWAMP</h1>
-                <span>ARCHIVE</span>
+                <h1>THE SWAMP ARCHIVE</h1>
             </div>
         </div>
 
         <nav>
             <ul>
-                <!-- Ícone de Bife (contorno) -->
-                <li><a href="#" class="active">
-                    <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 5c-2 1-3 3.5-2 6 1 2.5 4 4 8 4h2c2.5 0 4-1.5 4-3s-1.5-3-4-3h-2c-2 0-3-1-3-2.5S7 5 6 5z"/>
-                        <circle cx="10" cy="10" r="1.5"/>
-                        <path d="M14 13c4 0 7-2 7-5s-3-5-7-5c-3 0-5.5 1.5-6.5 3.5"/>
-                    </svg>
+                <li><a href="#" class="nav-link active" data-target="mamiferos">
+                    <img src="images/decoração/carne_icon.png" class="menu-icon" alt="Carne" onerror="this.style.display='none'">
                     Mamíferos</a></li>
                 
-                <li><a href="#">
-                    <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
-                        <line x1="16" y1="8" x2="2" y2="22"/>
-                        <line x1="17.5" y1="15" x2="9" y2="15"/>
-                    </svg>
+                <li><a href="#" class="nav-link" data-target="aves">
+                    <img src="images/decoração/pena_icon.png" class="menu-icon" alt="Pena" onerror="this.style.display='none'">
                     Aves</a></li>
                 
-                <li><a href="#">
-                    <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                    </svg>
+                <li><a href="#" class="nav-link" data-target="repteis">
+                    <img src="images/decoração/ovo_icon.png" class="menu-icon" alt="Ovo" onerror="this.style.display='none'">
                     Répteis/Anfíbios</a></li>
                 
-                <li><a href="#"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Sobre Nós</a></li>
+                <li><a href="#" class="nav-link" data-target="sobre">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> 
+                    Sobre Nós</a></li>
                 
-                <li><a href="#"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Nossa Loja</a></li>
+                <li><a href="#" class="nav-link" data-target="loja">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> 
+                    Nossa Loja</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="grid-layout">
-            <div class="card card-foto-onca">
-                <div class="card-imagem">
-                    <!-- Usando o arquivo onca_pintada.jpg -->
-                    <img src="imagens/onca_pintada.jpg" alt="Onça-pintada">
-                </div>
-            </div>
+        <!-- Layout Principal: Conteúdo (Esquerda) + Curiosidades Fixas (Direita) -->
+        <div class="main-layout">
+            
+            <!-- Coluna de Conteúdo (Foto + Texto em Zig-Zag) -->
+            <div class="content-column">
+                
+                <!-- Seção: MAMÍFEROS -->
+                <section id="mamiferos" class="content-section active-section">
+                    <h2 class="titulo-secao">Mamíferos do Pantanal</h2>
+                    <div class="animal-list" id="container-mamiferos"></div>
+                </section>
 
-            <div class="card card-texto-onca card-com-matos">
-                <div class="card-texto">
-                    <div class="titulo-com-icone">
-                        <div class="icone-folha"><svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
-                        <h2>ONÇA-PINTADA</h2>
+                <!-- Seção: AVES -->
+                <section id="aves" class="content-section">
+                    <h2 class="titulo-secao">Aves do Pantanal</h2>
+                    <div class="animal-list" id="container-aves"></div>
+                </section>
+
+                <!-- Seção: RÉPTEIS -->
+                <section id="repteis" class="content-section">
+                    <h2 class="titulo-secao">Répteis e Anfíbios do Pantanal</h2>
+                    <div class="animal-list" id="container-repteis"></div>
+                </section>
+
+                <!-- Seção: SOBRE NÓS -->
+                <section id="sobre" class="content-section">
+                    <h2 class="titulo-secao">Sobre Nós</h2>
+                    <div class="info-box">
+                        <p>Bem-vindo ao The Swamp Archive! Somos uma plataforma dedicada a explorar, catalogar e divulgar a incrível biodiversidade do Pantanal. Nosso objetivo é educar e inspirar a conservação deste ecossistema único, levando informações precisas sobre a fauna e flora local para todos.</p>
+                        <p>Nossa equipe é formada por biólogos, pesquisadores e apaixonados pela natureza, unidos pela missão de preservar o Pantanal para as futuras gerações.</p>
                     </div>
-                    <p>A onça-pintada é o maior felino das Américas e um dos principais predadores do Pantanal. Possui uma mordida poderosa e excelente habilidade de natação, sendo capaz de caçar tanto em terra quanto na água.</p>
-                </div>
-            </div>
+                </section>
 
-            <div class="card card-curiosidades">
-                <div class="curiosidades-header">
-                    <div class="icone-busca"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
-                    <h2>FATO CURIOSO</h2>
-                </div>
-                <div class="curiosidades-body">
-                    <div class="icone-pata"><svg viewBox="0 0 24 24" class="svg-icon-verde"><path d="M12 16c-2.5 0-4.5 2-4.5 4.5S9.5 25 12 25s4.5-2 4.5-4.5S14.5 16 12 16zm-5.5-3C4.5 13 2 15.5 2 18.5S4.5 24 6.5 24s4.5-2.5 4.5-5.5S8.5 13 6.5 13zm11 0c-2 0-4.5 2.5-4.5 5.5S15.5 24 17.5 24s4.5-2.5 4.5-5.5S19.5 13 17.5 13zM12 4c-3 0-5.5 2.5-5.5 5.5S9 15 12 15s5.5-2.5 5.5-5.5S15 4 12 4zM5.5 7C3.5 7 2 8.5 2 10.5S3.5 14 5.5 14 9 12.5 9 10.5 7.5 7 5.5 7zm13 0c-2 0-3.5 1.5-3.5 3.5s1.5 3.5 3.5 3.5 3.5-1.5 3.5-3.5S20.5 7 18.5 7z"/></svg></div>
-                    <p>Tanto a onça quanto a ariranha são excelentes nadadores e dependem das águas do pântano para sobreviver.</p>
-                </div>
-                <div class="imagem-fundo-curiosidades">
-                    <!-- Usando o arquivo plantas.png -->
-                    <img src="imagens/plantas.png" alt="Pântano">
-                </div>
-            </div>
-
-            <div class="card card-texto-ariranha card-com-matos">
-                <div class="card-texto">
-                    <div class="titulo-com-icone">
-                        <div class="icone-folha"><svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
-                        <h2>ARIRANHA</h2>
+                <!-- Seção: NOSSA LOJA -->
+                <section id="loja" class="content-section">
+                    <h2 class="titulo-secao">Nossa Loja</h2>
+                    <div class="info-box">
+                        <p>Explore nossos produtos exclusivos! Vendemos camisetas, canecas, livros e outros itens temáticos do Pantanal. Toda a renda obtida é revertida para projetos de pesquisa e preservação ambiental na região.</p>
+                        <p>Em breve, você poderá adquirir nossos produtos diretamente por aqui. Fique de olho nas novidades!</p>
                     </div>
-                    <p>A ariranha é a maior espécie de lontra do mundo e vive em grupos familiares. É muito ágil na água e se alimenta principalmente de peixes, desempenhando um papel essencial no equilíbrio do ecossistema.</p>
-                </div>
+                </section>
             </div>
 
-            <div class="card card-foto-ariranha">
-                <div class="card-imagem">
-                    <!-- Usando o arquivo ariranha.jpg -->
-                    <img src="imagens/ariranha.jpg" alt="Ariranha">
+            <!-- Coluna Fixa de Curiosidades (Lado Direito) -->
+            <aside class="curiosities-column">
+                <div class="card-curiosidade-fixa">
+                    <div class="curiosidades-header">
+                        <div class="icone-busca"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                        <h2>FATO CURIOSO</h2>
+                    </div>
+                    <div class="curiosidade-fixa-body" id="curiosidade-fixa-texto">
+                        <p>Selecione um animal abaixo para ver sua curiosidade aqui.</p>
+                    </div>
+                    <!-- Fundo de plantas na coluna direita -->
+                    <div class="decoracao-coluna"></div>
                 </div>
-            </div>
+            </aside>
+
         </div>
     </main>
 
+    <script src="dados.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
