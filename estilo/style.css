@@ -10,6 +10,10 @@
     --branco: #ffffff;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -49,7 +53,7 @@ header::after {
     right: 0;
     width: 250px;
     height: 100%;
-    background-image: url('../parte_funcional/images/decoração/elemento_01.png');
+    background-image: url('images/decoração/elemento_01.png');
     background-size: 900px auto;
     background-position: 92% 0%;
     background-repeat: no-repeat;
@@ -81,12 +85,9 @@ header::after {
     object-fit: cover;
 }
 
+/* TÍTULO BRANCO */
 .logo-text {
-    background: linear-gradient(180deg, #305955 0%, #345930 50%, #465930 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: #ffffff !important;
     font-family: 'Comic Neue', cursive;
     font-size: 32px;
     font-weight: 700;
@@ -95,11 +96,7 @@ header::after {
 
 .logo-text h1,
 .logo-text span {
-    background: inherit;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: #ffffff !important;
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -155,16 +152,19 @@ main {
     position: relative;
 }
 
+/* Layout Principal de Duas Colunas */
 .main-layout {
     display: flex;
     gap: 30px;
     align-items: flex-start;
 }
 
+/* Coluna de Conteúdo (Foto + Texto) */
 .content-column {
     flex: 3.5;
 }
 
+/* Coluna Fixa de Curiosidades (Direita) */
 .curiosities-column {
     flex: 1.5;
     position: sticky;
@@ -179,7 +179,8 @@ main {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    min-height: 400px;
+    height: auto;
+    min-height: 500px;
 }
 
 .curiosidades-header {
@@ -210,9 +211,9 @@ main {
 }
 
 .curiosidade-fixa-body {
+    padding: 10px 5px;
     position: relative;
     z-index: 2;
-    padding: 10px 5px;
 }
 
 .curiosidade-fixa-body p {
@@ -222,13 +223,14 @@ main {
     color: #2c3e2c;
 }
 
+/* Fundo de plantas da coluna direita */
 .decoracao-coluna {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 250px;
-    background-image: url('../parte_funcional/images/decoração/elemento_03.png');
+    background-image: url('images/decoração/elemento_03.png');
     background-size: cover;
     background-position: bottom;
     opacity: 0.4;
@@ -238,6 +240,7 @@ main {
     filter: blur(1px) brightness(0.9);
 }
 
+/* Esconde/Mostra seções */
 .content-section {
     display: none;
     animation: fadeIn 0.5s ease;
@@ -263,6 +266,7 @@ main {
     text-align: center;
 }
 
+/* Cards de Animais em Zig-Zag (Foto + Texto) */
 .animal-list {
     display: flex;
     flex-direction: column;
@@ -273,6 +277,7 @@ main {
     display: flex;
     gap: 20px;
     align-items: center;
+    cursor: pointer;
 }
 
 .card-animal-zigzag:nth-child(even) {
@@ -316,7 +321,7 @@ main {
     right: -10px;
     width: 150px;
     height: 150px;
-    background-image: url('../parte_funcional/images/decoração/elemento_02.png');
+    background-image: url('images/decoração/elemento_02.png');
     background-size: cover;
     opacity: 0.3;
     z-index: 1;
@@ -360,24 +365,6 @@ main {
     color: #2c3e2c;
     position: relative;
     z-index: 2;
-}
-
-.curiosidade-dupla {
-    background-color: #d4d9bd;
-    border-radius: 15px;
-    padding: 15px;
-    margin-top: 20px;
-    border: 2px dashed var(--verde-medio);
-    position: relative;
-    z-index: 2;
-}
-
-.curiosidade-dupla strong {
-    font-family: 'Merriweather Sans', sans-serif;
-    color: var(--verde-escuro);
-    display: block;
-    margin-bottom: 5px;
-    font-size: 18px;
 }
 
 .info-box {
@@ -438,4 +425,197 @@ main {
         font-size: 24px;
         text-align: center;
     }
+}
+
+/* ===== ESTILO DO CÓDIGO PROMOCIONAL ===== */
+
+.promo-container {
+    margin-top: 30px;
+    background-color: #d4d9bd;
+    border: 2px dashed var(--verde-medio);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.promo-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--verde-escuro);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.promo-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    border: 2px solid var(--verde-medio);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--fundo-bege);
+    color: var(--texto-escuro);
+    margin: 10px auto;
+    display: block;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.promo-input:focus {
+    outline: none;
+    border-color: var(--verde-claro);
+    box-shadow: 0 0 5px rgba(109, 127, 97, 0.5);
+}
+
+/* ===== LAYOUT DO CARD COMPLETO (FOTO + TEXTO + CURIOSIDADE) ===== */
+
+.card-animal-completo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: var(--fundo-caixa);
+    border-radius: 15px;
+    border: 2px solid var(--verde-medio);
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.card-animal-completo::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 100px;
+    height: 100px;
+    background-image: url('images/decoração/elemento_02.png');
+    background-size: cover;
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+.card-animal-completo .foto-col {
+    flex: 1;
+}
+
+.card-animal-completo .foto-col .card-imagem {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--verde-escuro);
+    height: 250px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-animal-completo .foto-col .card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-animal-completo .texto-col {
+    flex: 1.5;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.card-animal-completo .texto-col p {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #2c3e2c;
+    position: relative;
+    z-index: 2;
+}
+
+.card-animal-completo .curiosidade-col {
+    flex: 1.2;
+    position: relative;
+    z-index: 2;
+}
+
+.card-animal-completo .curiosidade-box {
+    background-color: #d4d9bd;
+    border: 2px dashed var(--verde-medio);
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-animal-completo .curiosidade-box strong {
+    font-size: 16px;
+    color: var(--verde-escuro);
+    border-bottom: 2px solid var(--verde-medio);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.card-animal-completo .curiosidade-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+    color: #2c3e2c;
+}
+
+/* ===== RESPONSIVIDADE DO CARD ===== */
+@media (max-width: 1000px) {
+    .card-animal-completo {
+        flex-direction: column;
+    }
+}
+
+.nome-cientifico {
+    font-size: 14px;
+    font-style: italic;
+    color: #6d7f61;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ===== TÍTULO EM ARCO (THE SWAMP ARCHIVE) - SOBRE NÓS ===== */
+.titulo-arco {
+    font-family: 'Comic Neue', cursive;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0 40px;
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #305955 0%, #345930 50%, #465930 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== ESTILO BOTÃO BACKUP (SOBRE NÓS) ===== */
+#btn-backup {
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }

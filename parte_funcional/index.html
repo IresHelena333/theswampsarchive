@@ -11,7 +11,7 @@
     <header>
         <div class="logo">
             <div class="logo-imagem">
-                <img src="images/decoração/logo.png" alt="Logo The Swamp Archive" onerror="this.style.display='none'">
+                <img src="../images/decoração/logo.png" alt="Logo The Swamp Archive" onerror="this.style.display='none'">
             </div>
             <div class="logo-text">
                 <h1>THE SWAMP ARCHIVE</h1>
@@ -21,15 +21,15 @@
         <nav>
             <ul>
                 <li><a href="#" class="nav-link active" data-target="mamiferos">
-                    <img src="images/decoração/carne_icon.png" class="menu-icon" alt="Carne" onerror="this.style.display='none'">
+                    <img src="../images/decoração/carne_icon.png" class="menu-icon" alt="Carne" onerror="this.style.display='none'">
                     Mamíferos</a></li>
                 
                 <li><a href="#" class="nav-link" data-target="aves">
-                    <img src="images/decoração/pena_icon.png" class="menu-icon" alt="Pena" onerror="this.style.display='none'">
+                    <img src="../images/decoração/pena_icon.png" class="menu-icon" alt="Pena" onerror="this.style.display='none'">
                     Aves</a></li>
                 
                 <li><a href="#" class="nav-link" data-target="repteis">
-                    <img src="images/decoração/ovo_icon.png" class="menu-icon" alt="Ovo" onerror="this.style.display='none'">
+                    <img src="../images/decoração/ovo_icon.png" class="menu-icon" alt="Ovo" onerror="this.style.display='none'">
                     Répteis/Anfíbios</a></li>
                 
                 <li><a href="#" class="nav-link" data-target="sobre">
@@ -45,7 +45,9 @@
 
     <main>
         <div class="main-layout">
+            
             <div class="content-column">
+                
                 <section id="mamiferos" class="content-section active-section">
                     <h2 class="titulo-secao">Mamíferos do Pantanal</h2>
                     <div class="animal-list" id="container-mamiferos"></div>
@@ -63,9 +65,31 @@
 
                 <section id="sobre" class="content-section">
                     <h2 class="titulo-secao">Sobre Nós</h2>
+                    <h2 class="titulo-arco">THE SWAMP ARCHIVE</h2>
                     <div class="info-box">
-                        <p>Bem-vindo ao The Swamp Archive! Somos uma plataforma dedicada a explorar, catalogar e divulgar a incrível biodiversidade do Pantanal. Nosso objetivo é educar e inspirar a conservação deste ecossistema único, levando informações precisas sobre a fauna e flora local para todos.</p>
-                        <p>Nossa equipe é formada por biólogos, pesquisadores e apaixonados pela natureza, unidos pela missão de preservar o Pantanal para as futuras gerações.</p>
+                        <p>Somos três grandes amigos explorando e protegendo o Pantanal!</p>
+                        
+                        <div style="margin-top: 20px;">
+                            <h3 style="color: #3d4d36; margin-bottom: 10px;">Dani (Ariranha) 🦦</h3>
+                            <p style="margin-bottom: 15px;">Dani é o coração do grupo! Sempre amigável, pronto para ajudar qualquer um e mestre em fazer novas amizades. Ele é extremamente perspicaz e está sempre tentando ser corajoso para proteger os amigos.</p>
+
+                            <h3 style="color: #3d4d36; margin-bottom: 10px;">Nino (Jacaré) 🐊</h3>
+                            <p style="margin-bottom: 15px;">Nino é o durão que vive resmungando! Implicar com o Bibo é o seu jeito estranho de demonstrar afeto. Ele é extremamente leal, tem um conhecimento absurdo de combate e é o porto seguro do grupo quando a situação aperta. Só não peça pra ele ser simpático, porque não vai rolar.</p>
+
+                            <h3 style="color: #3d4d36; margin-bottom: 10px;">Titu (Tuiuiú) 🦩</h3>
+                            <p style="margin-bottom: 15px;">Titu é o líder inteligente e imponente! Sempre calmo e orgulhoso, ele não tem medo de se intrometer quando necessário para o bem do grupo. Ele valoriza seus amigos profundamente, mesmo que não demonstre abertamente.</p>
+                        </div>
+                        
+                        <!-- ÁREA DE SENHA (ESTILO IGUAL À LOJA) -->
+                        <div id="admin-area" style="margin-top: 30px; background-color: #d4d9bd; border: 2px dashed var(--verde-medio); border-radius: 15px; padding: 20px; text-align: center; display:block;">
+                            <p style="font-size: 18px; font-weight: bold; color: var(--verde-escuro); margin-bottom: 10px;">🔒 DIGITE A SENHA AQUI</p>
+                            <input type="password" id="admin-senha" placeholder="Digite a senha..." style="width: 100%; max-width: 400px; padding: 12px; border: 2px solid var(--verde-medio); border-radius: 8px; font-size: 16px; background-color: var(--fundo-bege); color: var(--texto-escuro); margin: 10px auto; display: block; font-family: 'Merriweather Sans', sans-serif;">
+                            <button onclick="verificarSenha()" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold;">Enviar</button>
+                            <p id="admin-msg" style="margin-top: 10px; font-weight: bold;"></p>
+                        </div>
+
+                        <!-- ADIÇÃO: Botão Backup -->
+                        <button id="btn-backup" style="display:none; margin-top:20px; background:#3d4d36; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Backup</button>
                     </div>
                 </section>
 
@@ -73,25 +97,158 @@
                     <h2 class="titulo-secao">Nossa Loja</h2>
                     <div class="info-box">
                         <p>Explore nossos produtos exclusivos! Vendemos camisetas, canecas, livros e outros itens temáticos do Pantanal. Toda a renda obtida é revertida para projetos de pesquisa e preservação ambiental na região.</p>
-                        <p>Em breve, você poderá adquirir nossos produtos diretamente por aqui. Fique de olho nas novidades!</p>
+                        
+                        <!-- ADIÇÃO: Código promocional estilizado -->
+                        <div style="margin-top: 30px; background-color: #d4d9bd; border: 2px dashed var(--verde-medio); border-radius: 15px; padding: 20px; text-align: center;">
+                            <label for="codigo-promo" style="font-size: 18px; font-weight: bold; color: var(--verde-escuro); margin-bottom: 10px; display: block;">TEM CUPOM? DIGITE AQUI!</label>
+                            <input type="text" id="codigo-promo" placeholder="Digite o código promocional" style="width: 100%; max-width: 400px; padding: 12px; border: 2px solid var(--verde-medio); border-radius: 8px; font-size: 16px; background-color: var(--fundo-bege); color: var(--texto-escuro); margin: 10px auto; display: block;">
+                            <button onclick="verificarCodigo()" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold;">Resgatar</button>
+                            <p id="promo-msg" style="margin-top: 10px;"></p>
+                        </div>
                     </div>
                 </section>
             </div>
-
-            <aside class="curiosities-column">
-                <div class="card-curiosidade-fixa">
-                    <div class="curiosidades-header">
-                        <div class="icone-busca"><svg viewBox="0 0 24 24" class="svg-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
-                        <h2>FATO CURIOSO</h2>
-                    </div>
-                    <div class="curiosidade-fixa-body">
-                        <p>Explore as curiosidades únicas dos animais do Pantanal, navegando pelas categorias abaixo.</p>
-                    </div>
-                    <div class="decoracao-coluna"></div>
-                </div>
-            </aside>
         </div>
     </main>
+
+    <!-- ADIÇÃO: Tela de 404 Fake -->
+    <div id="tela-404" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#1f2e1b; color:white; z-index:9999; text-align:center; padding-top:20vh;">
+        <h1>404 - Página não encontrada</h1>
+        <p>Digite a palavra secreta para sair daqui...</p>
+        <input type="text" id="input-404">
+        <button onclick="verificar404()">Enviar</button>
+    </div>
+
+    <!-- ADIÇÃO: Tela do Final (Dani Louco) -->
+    <div id="tela-final" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; color:white; z-index:9999; text-align:center;">
+        <img src="../images/mascotes/dani_final.png" alt="Dani Louco" style="max-width:100%; max-height:70vh; margin-top:5vh;">
+        <p style="font-size:24px; margin-top:20px;">🐸 Sapo Bibo ao redor do Dani... 🐸</p>
+    </div>
+
+    <!-- ADIÇÃO: Tela do mascote Nino (Centralizada) -->
+    <div id="tela-nino" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:9999; justify-content: center; align-items: center;">
+        <div style="background: #f0efe2; padding: 30px; border-radius: 20px; text-align: center; max-width: 400px;">
+            <img src="../images/mascotes/nino.png" alt="Nino" style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 20px;">
+            <p style="font-size: 24px; font-weight: bold; color: #1f2e1b; margin-bottom: 10px;">🐊 NINO (Jacaré)</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Desde a última vez, estou tentando manter a calma... Não posso... Perder...</p>
+            <button onclick="document.getElementById('tela-nino').style.display='none'" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- ADIÇÃO: Tela do mascote Dani (Centralizada) -->
+    <div id="tela-dani" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:9999; justify-content: center; align-items: center;">
+        <div style="background: #f0efe2; padding: 30px; border-radius: 20px; text-align: center; max-width: 400px;">
+            <img src="../images/mascotes/dani.png" alt="Dani" style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 20px;">
+            <p style="font-size: 24px; font-weight: bold; color: #1f2e1b; margin-bottom: 10px;">🦦 DANI (Ariranha)</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Amigável, perspicaz e sempre pronto para ajudar. O coração do grupo!</p>
+            <button onclick="document.getElementById('tela-dani').style.display='none'" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- ADIÇÃO: Tela do mascote Titu (Centralizada) -->
+    <div id="tela-titu" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:9999; justify-content: center; align-items: center;">
+        <div style="background: #f0efe2; padding: 30px; border-radius: 20px; text-align: center; max-width: 400px;">
+            <img src="../images/mascotes/titu.png" alt="Titu" style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 20px;">
+            <p style="font-size: 24px; font-weight: bold; color: #1f2e1b; margin-bottom: 10px;">🦩 TITU (Tuiuiú)</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Inteligente, calmo e imponente. O líder que mantém todos unidos!</p>
+            <button onclick="document.getElementById('tela-titu').style.display='none'" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- ADIÇÃO: Tela da senha do jacaré (centralizada) -->
+    <div id="tela-jacare-senha" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:9999; justify-content: center; align-items: center;">
+        <div style="background: #f0efe2; padding: 30px; border-radius: 20px; text-align: center; max-width: 500px;">
+            <img src="../images/repteis_anfibios/jacare_do_pantanal_senha.jpg" alt="Jacaré com senha" style="width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 20px;">
+            <p style="font-size: 20px; font-weight: bold; color: #1f2e1b; margin-bottom: 10px;">A senha é:</p>
+            <p id="senha-descoberta" style="font-size: 32px; font-weight: bold; color: #3d4d36; margin-bottom: 20px;"></p>
+            <button onclick="document.getElementById('tela-jacare-senha').style.display='none'" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Tela da senha do jacaré -->
+    <div id="jacare_do_pantanal_senha" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:9999; justify-content: center; align-items: center;">
+        <div style="background: #f0efe2; padding: 30px; border-radius: 20px; text-align: center; max-width: 500px;">
+            <img src="../images/repteis_anfibios/jacare_do_pantanal_senha.jpg" alt="Jacaré com senha" style="width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 20px;">
+            <p style="font-size: 20px; font-weight: bold; color: #1f2e1b; margin-bottom: 10px;">A senha é:</p>
+            <p id="senha-descoberta" style="font-size: 32px; font-weight: bold; color: #3d4d36; margin-bottom: 20px;"></p>
+            <button onclick="document.getElementById('jacare_do_pantanal_senha').style.display='none'" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Tela da senha do jacaré (centralizada) -->
+<div id="jacare_do_pantanal_senha" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:9999; justify-content: center; align-items: center;">
+    <div style="background: #f0efe2; padding: 30px; border-radius: 20px; text-align: center; max-width: 500px;">
+        <img src="../images/repteis_anfibios/jacare_do_pantanal_senha.jpg" alt="Jacaré com senha" style="width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 20px;">
+        <p style="font-size: 20px; font-weight: bold; color: #1f2e1b; margin-bottom: 10px;">A senha é:</p>
+        <p id="senha-descoberta" style="font-size: 32px; font-weight: bold; color: #3d4d36; margin-bottom: 20px;"></p>
+        <button onclick="document.getElementById('jacare_do_pantanal_senha').style.display='none'" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer;">Fechar</button>
+    </div>
+</div>
+
+<!-- Tela dos Vaga-lumes (Canvas) -->
+<div id="tela-sapo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #000; z-index:9999; justify-content: center; align-items: center;">
+    <div style="position: relative; width: 100%; height: 100%;">
+        <canvas id="canvas-sapo" style="width: 100%; height: 100%; display: block;"></canvas>
+        
+        <!-- Imagem e diálogo do Dani (aparecem após a senha) -->
+        <div id="dani-dialogo" style="position:absolute; top:65%; left:10%; display:none; align-items:center; gap:20px;">
+            <img src="../images/mascotes/dani.png" alt="Dani" style="width:120px; height:auto; border-radius:10px;">
+            <p style="color:white; font-size:24px; font-weight:bold;">🐸 Dani: "Como essa página está fazendo isso!<br>Será que o Bibo..."</p>
+        </div>
+    </div>
+</div>
+        
+        <!-- 29 PONTOS AMARELOS -->
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+        <div class="ponto-sapo" style="position:absolute; width:15px; height:15px; border-radius:50%; background:yellow; box-shadow:0 0 10px yellow;"></div>
+    </div>
+            <img src="../images/mascotes/dani.png" alt="Dani" style="position:absolute; top:45%; left:25%; width:120px; height:auto; z-index:10; border-radius:10px;">
+</div>
+
+<!-- SISTEMA DE DIÁLOGO -->
+<div id="dialogo-box" style="display:none; position:fixed; top:60%; left:0; width:100%; z-index:9998; padding:20px; pointer-events:none;">
+    <div style="max-width: 1100px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+        <!-- Lado Esquerdo: Retângulo com a fala -->
+        <div style="background: #1f2e1b; border: 3px solid #6d7f61; border-radius: 15px; padding: 20px; width: 65%; position: relative;">
+            <p style="color:white; font-size: 20px; line-height: 1.6; margin: 0;" id="dialogo-texto"></p>
+            
+            <!-- Informação extra (vaga-lumes, etc.) -->
+            <div id="dialogo-extra" style="margin-top: 15px; display:none;"></div>
+        </div>
+
+        <!-- Lado Direito: Personagem (imagem) -->
+        <div style="width: 30%; text-align: center; position: relative;">
+            <img id="dialogo-personagem" src="" alt="Personagem" style="width: 100%; max-width: 250px; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        </div>
+    </div>
+</div>
 
     <script src="../dados/dados.js"></script>
     <script src="script.js"></script>
