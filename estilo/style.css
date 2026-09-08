@@ -152,19 +152,16 @@ main {
     position: relative;
 }
 
-/* Layout Principal de Duas Colunas */
 .main-layout {
     display: flex;
     gap: 30px;
     align-items: flex-start;
 }
 
-/* Coluna de Conteúdo (Foto + Texto) */
 .content-column {
     flex: 3.5;
 }
 
-/* Coluna Fixa de Curiosidades (Direita) */
 .curiosities-column {
     flex: 1.5;
     position: sticky;
@@ -179,8 +176,7 @@ main {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    height: auto;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .curiosidades-header {
@@ -223,7 +219,6 @@ main {
     color: #2c3e2c;
 }
 
-/* Fundo de plantas da coluna direita */
 .decoracao-coluna {
     position: absolute;
     bottom: 0;
@@ -240,7 +235,6 @@ main {
     filter: blur(1px) brightness(0.9);
 }
 
-/* Esconde/Mostra seções */
 .content-section {
     display: none;
     animation: fadeIn 0.5s ease;
@@ -266,7 +260,6 @@ main {
     text-align: center;
 }
 
-/* Cards de Animais em Zig-Zag (Foto + Texto) */
 .animal-list {
     display: flex;
     flex-direction: column;

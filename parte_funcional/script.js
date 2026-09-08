@@ -26,7 +26,7 @@ function criarCards(categoria, containerId) {
                 <p>${animal.texto.replace('servem de alimento para muitos animais', '<a href="#" id="link-sapo" style="cursor:pointer; color:#0056b3; text-decoration:underline; font-weight:bold;" onclick="event.preventDefault(); irPara404();">servem de alimento para muitos animais</a>')}</p>
             `;
         }
-        // Adiciona o nome científico
+
         const card = `
             <div class="card-animal-completo">
                 <div class="foto-col">
@@ -54,25 +54,21 @@ function criarCards(categoria, containerId) {
             </div>
         `;
 
-        // ===== Lógica do Jacaré (CLIQUE apenas na imagem) =====
         let jacareOnClick = "";
         if (categoria === 'repteis' && animal.nome.toLowerCase().includes('jacaré')) {
             jacareOnClick = `onclick="clicarJacare('${animal.nome}')"`;
         }
-        // Substitui o onclick da imagem
         const cardFinal = card.replace('<div class="card-imagem">', `<div class="card-imagem" ${jacareOnClick}>`);
         container.innerHTML += cardFinal;
     });
 }
 
-// Função para atualizar a curiosidade na coluna direita (AGORA REMOVIDA - já está no card)
+// Função para atualizar a curiosidade na coluna direita (REMOVIDA)
 function atualizarCuriosidade(nome, curiosidade) {
-    // Não é mais usada, apenas para não quebrar
+    // Não é mais usada
 }
 
 // ===== LÓGICA DO JOGO/EASTER EGG =====
-
-// Estado da história
 let estadoHistoria = {
     codigoResgatado: false,
     senhaAdminAtiva: false,
@@ -80,7 +76,7 @@ let estadoHistoria = {
     sapoAtivado: false,
 };
 
-// Função da Loja (Código promocional - SÓ ACEITA #Tuiuiúsãoosmelhores)
+// Função da Loja (Código promocional)
 function verificarCodigo() {
     const input = document.getElementById('codigo-promo').value.trim();
     const msg = document.getElementById('promo-msg');
@@ -95,66 +91,53 @@ function verificarCodigo() {
     }
 }
 
-// Função do Jacaré específico (Répteis) - CLIQUE NA IMAGEM
+// Função do Jacaré específico (Répteis)
 function clicarJacare(nome) {
     if (!estadoHistoria.codigoResgatado) return;
 
-    alert("🐊 Nino: 'Desde a última vez, estou tentando manter a calma... Não posso... Perder...'");
+    mostrarDialogo(
+        "../images/mascotes/nino.png", 
+        ["🐊 Nino: 'Desde a última vez, estou tentando manter a calma... Não posso... Perder...'"]
+    );
 
-    // Mostra a tela da senha em cima da imagem
     document.getElementById('jacare_do_pantanal_senha').style.display = 'flex';
     document.getElementById('jacare_do_pantanal_senha').style.justifyContent = 'center';
     document.getElementById('jacare_do_pantanal_senha').style.alignItems = 'center';
-
-    // Preenche a senha
     document.getElementById('senha-descoberta').innerText = estadoHistoria.senhaDescoberta;
 }
 
-// Função da Senha (Sobre Nós) - PRIMEIRA SENHA (5219)
-// Função da Senha (Sobre Nós) - PRIMEIRA SENHA (5219)
+// Função da Senha (Sobre Nós)
 function verificarSenha() {
     const input = document.getElementById('admin-senha').value.trim();
     const msg = document.getElementById('admin-msg');
 
     if (input === "5219") {
-        // SENHA CORRETA (VAGA-LUMES)
         document.getElementById('tela-sapo').style.display = 'flex';
         document.getElementById('tela-sapo').style.justifyContent = 'center';
         document.getElementById('tela-sapo').style.alignItems = 'center';
 
-                // MOSTRAR A TELA DO CANVAS (VAGA-LUMES)
-        document.getElementById('tela-sapo').style.display = 'flex';
-        document.getElementById('tela-sapo').style.justifyContent = 'center';
-        document.getElementById('tela-sapo').style.alignItems = 'center';
-
-        // INICIALIZAR O CANVAS
         inicializarCanvasSapo();
 
-        // MOSTRAR O DANI COM DIÁLOGO
+        // Mostrar o Dani com diálogo após 0.8 segundos
         setTimeout(() => {
-            document.getElementById('dani-dialogo').style.display = 'flex';
-        }, 800); // Aparece após 0.8 segundos
+            mostrarDialogo(
+                "../images/mascotes/dani.png", 
+                ["🐸 Dani: 'Como essa página está fazendo isso!'", "Será que o Bibo..."],
+                "<div style='color:#FFD700; font-size:18px; font-weight:bold;'>✨ Os vaga-lumes formaram a palavra: <strong>SAPO</strong> ✨</div>"
+            );
+        }, 800);
 
-        // EXPULSAR EM 4 SEGUNDOS
+        // Expulsar em 4 segundos (com reset da área de senha)
         setTimeout(() => {
             document.getElementById('tela-sapo').style.display = 'none';
-            document.getElementById('dani-dialogo').style.display = 'none';
-            alert("⚠️ Você foi expulso!");
             
-            // IR PARA OS RÉPTEIS
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.querySelector('.nav-link[data-target="repteis"]').classList.add('active');
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
-            document.getElementById('repteis').classList.add('active-section');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 4000);
+            // Resetar a área da senha
+            document.getElementById('admin-senha').value = "";
+            document.getElementById('admin-msg').innerHTML = "";
+            document.getElementById('admin-area').style.display = 'none';
+            document.getElementById('btn-backup').style.display = 'none';
 
-        // EXPULSAR EM 4 SEGUNDOS
-        setTimeout(() => {
-            document.getElementById('tela-sapo').style.display = 'none';
-            alert("⚠️ Você foi expulso!");
-            
-            // VAI PARA OS RÉPTEIS
+            // Ir para os répteis
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
             document.querySelector('.nav-link[data-target="repteis"]').classList.add('active');
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
@@ -179,14 +162,22 @@ function verificar404() {
     if (input.toLowerCase() === 'sapo') {
         document.getElementById('tela-404').style.display = 'none';
         
-        // Titu aparece
-        alert("🐸 Titu: 'Será que o Bibo...'");
+        mostrarDialogo(
+            "../images/mascotes/titu.png", 
+            ["🐸 Titu: 'Será que o Bibo...'"]
+        );
+
+        setTimeout(() => {
+            mostrarDialogo(
+                "../images/mascotes/dani.png", 
+                ["🐸 Dani: 'Nós...'"]
+            );
+        }, 2000);
         
-        // Dani aparece
-        alert("🐸 Dani: 'Nós...'");
-        
-        // Sumiram, voltar para mamíferos e resetar tudo
-        resetarHistoria();
+        // Resetar a história após os diálogos
+        setTimeout(() => {
+            resetarHistoria();
+        }, 4000);
     } else {
         alert("Palavra incorreta!");
     }
@@ -208,11 +199,11 @@ function resetarHistoria() {
     document.getElementById('btn-backup').style.display = 'none';
     document.getElementById('admin-area').style.display = 'none';
 
-    // Retornar para mamíferos
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     document.querySelector('.nav-link[data-target="mamiferos"]').classList.add('active');
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
     document.getElementById('mamiferos').classList.add('active-section');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Função para desenhar a palavra SAPO com vaga-lumes no canvas
@@ -229,7 +220,6 @@ function inicializarCanvasSapo() {
     ajustarTela();
     window.addEventListener("resize", ajustarTela);
 
-    // Matrizes das letras
     const letras = {
         S: ["01111", "11000", "11000", "01111", "00011", "00011", "11110"],
         A: ["01110", "11011", "11011", "11111", "11011", "11011", "11011"],
@@ -243,7 +233,6 @@ function inicializarCanvasSapo() {
     const espacamentoLetras = 35;
     let pontos = [];
 
-    // Calcula a largura total
     let larguraTotal = palavra.length * (5 * (tamanhoPonto + espacamento)) + (palavra.length - 1) * espacamentoLetras;
     let inicioX = (canvas.clientWidth - larguraTotal) / 2;
     let inicioY = canvas.clientHeight / 2 - 30;
@@ -289,13 +278,61 @@ function inicializarCanvasSapo() {
     animar();
 }
 
+// Função para exibir um diálogo com personagem e fala digitando gradativamente
+function mostrarDialogo(personagemSrc, falas, informacaoExtra = "") {
+    const box = document.getElementById('dialogo-box');
+    const textoEl = document.getElementById('dialogo-texto');
+    const personagemEl = document.getElementById('dialogo-personagem');
+    const extraEl = document.getElementById('dialogo-extra');
+
+    personagemEl.src = personagemSrc;
+    personagemEl.style.display = 'block';
+
+    if (informacaoExtra) {
+        extraEl.innerHTML = informacaoExtra;
+        extraEl.style.display = 'block';
+    } else {
+        extraEl.style.display = 'none';
+    }
+
+    box.style.display = 'flex';
+    box.style.pointerEvents = 'auto';
+
+    let falaIndex = 0;
+    let charIndex = 0;
+    let intervalo;
+
+    function digitarFala() {
+        const fala = falas[falaIndex];
+        charIndex = 0;
+        textoEl.textContent = "";
+
+        intervalo = setInterval(() => {
+            textoEl.textContent = fala.substring(0, charIndex);
+            charIndex++;
+            if (charIndex > fala.length) {
+                clearInterval(intervalo);
+                falaIndex++;
+                if (falaIndex < falas.length) {
+                    setTimeout(digitarFala, 1000);
+                } else {
+                    setTimeout(() => {
+                        box.style.display = 'none';
+                    }, 1500);
+                }
+            }
+        }, 30);
+    }
+
+    digitarFala();
+}
+
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
     criarCards('mamiferos', 'container-mamiferos');
     criarCards('aves', 'container-aves');
     criarCards('repteis', 'container-repteis');
 
-    // NAVEGAÇÃO
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.content-section');
 
@@ -312,23 +349,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Quando o jogador for para "Sobre Nós" APÓS o 404 (se ainda estiver com estado)
+    // Mostrar a área da senha apenas quando o jogador descobrir a senha do jacaré
     document.querySelector('.nav-link[data-target="sobre"]').addEventListener('click', function() {
-        if (estadoHistoria.codigoResgatado === false && estadoHistoria.senhaAdminAtiva === false) {
-            document.getElementById('btn-backup').style.display = 'block';
+        if (estadoHistoria.senhaAdminAtiva || estadoHistoria.codigoResgatado) {
             document.getElementById('admin-area').style.display = 'block';
         } else {
-            document.getElementById('btn-backup').style.display = 'none';
+            document.getElementById('admin-area').style.display = 'none';
         }
     });
 
-    // Botão Backup (quando aparece)
+    // Botão Backup
     const btnBackup = document.getElementById('btn-backup');
     btnBackup.addEventListener('click', function() {
         document.getElementById('tela-final').style.display = 'block';
-        alert("🐸🐸🐸 DANI LOUCO COM O SAPO BIBO AO REDOR! 🐸🐸🐸");
-        
-        // A aba fecha sozinha em 6,30 segundos
+        mostrarDialogo(
+            "../images/mascotes/dani.png", 
+            ["🐸🐸🐸 DANI LOUCO COM O SAPO BIBO AO REDOR! 🐸🐸🐸"]
+        );
         setTimeout(() => {
             document.getElementById('tela-final').style.display = 'none';
         }, 6300);
