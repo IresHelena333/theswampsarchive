@@ -351,7 +351,7 @@ const dadosAnimais = {
             nome: "Sapo-cururu", 
             nomeCientifico: "Rhinella diptycha",
             imagem: "sapo_cururu.jpg",
-            texto: "O sapo-cururu é um anfíbio terrestre bastante adaptável e pode ser encontrado tanto em áreas naturais quanto próximas de habitações. Vive em locais úmidos, margens de rios e ambientes terrestres. Alimenta-se principalmente de insetos, mas também pode capturar aranhas, escorpiões e lesmas.",
+            texto: "O sapo-cururu é um anfíbio terrestre bastante adaptável e pode ser encontrado tanto em áreas naturais quanto próximas de habitações. Vive em locais úmidos, margens de rios e ambientes terrestres. Alimenta-se principalmente de insetos, mas também pode capturar aranhas, escorpiões e lesmas. SERVEM DE ALIMENTO PARA MUITOS ANIMAIS.",
             curiosidade: "O sapo-cururu é um dos anfíbios mais comuns do Brasil. Ele possui glândulas de veneno na cabeça e nas costas que secretam uma substância tóxica quando ameaçado. Apesar disso, ele é inofensivo para os humanos, a menos que o veneno entre em contato com as mucosas."
         },
         { 

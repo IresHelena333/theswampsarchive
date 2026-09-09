@@ -12,13 +12,23 @@ function criarCards(categoria, containerId) {
     const container = document.getElementById(containerId);
     const animais = dadosAnimais[categoria];
     
-    const pasta = (categoria === 'mamiferos') ? 'images/mamifero' : (categoria === 'aves' ? 'images/aves' : 'images/repteis_anfibios');
+    const pasta = (categoria === 'mamiferos') ? 'images/mamifero' : (categoria === 'aves' ? 'images/aves' : 'imagens/repteis_anfibios');
 
     animais.forEach((animal) => {
         const nomeImagem = gerarNomeImagem(animal.nome);
         const caminho = pasta + '/' + nomeImagem;
         
         const imgHTML = `<img src="${caminho}" alt="${animal.nome}" onerror="this.parentElement.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; background:#d4d9bd; color:#3d4d36; font-weight:bold;\'>Imagem em breve</div>'">`;
+
+        // Define o ícone da categoria (carne, pena ou ovo)
+        let iconeCategoria = '';
+        if (categoria === 'mamiferos') {
+            iconeCategoria = `<img src="../imagens/decoração/carne_icon.png" class="icone-animal">`;
+        } else if (categoria === 'aves') {
+            iconeCategoria = `<img src="../imagens/decoração/pena_icon.png" class="icone-animal">`;
+        } else {
+            iconeCategoria = `<img src="../imagens/decoração/ovo_icon.png" class="icone-animal">`;
+        }
 
         let textoHTML = `<p>${animal.texto}</p>`;
         if (categoria === 'repteis' && animal.nome.toLowerCase().includes('sapo cururu')) {
@@ -35,10 +45,7 @@ function criarCards(categoria, containerId) {
                 <div class="texto-col">
                     <div class="titulo-com-icone">
                         <div class="icone-folha">
-                            <svg viewBox="0 0 24 24" class="svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
-                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-                            </svg>
+                            ${iconeCategoria}
                         </div>
                         <h3>${animal.nome}</h3>
                         <em class="nome-cientifico">${animal.nomeCientifico}</em>
@@ -54,21 +61,31 @@ function criarCards(categoria, containerId) {
             </div>
         `;
 
+        // ===== Lógica do Jacaré (CLIQUE apenas na imagem) =====
         let jacareOnClick = "";
         if (categoria === 'repteis' && animal.nome.toLowerCase().includes('jacaré')) {
             jacareOnClick = `onclick="clicarJacare('${animal.nome}')"`;
         }
+        // Substitui o onclick da imagem
         const cardFinal = card.replace('<div class="card-imagem">', `<div class="card-imagem" ${jacareOnClick}>`);
+
+        // Adiciona um padrão de decoração aleatório (sem repetir)
+        const padroes = ['card-padrao-1', 'card-padrao-2', 'card-padrao-3', 'card-padrao-4', 'card-padrao-5'];
+        const padraoAleatorio = padroes[Math.floor(Math.random() * padroes.length)];
+        card.classList.add(padraoAleatorio);
+
+        // Insere o card no container
         container.innerHTML += cardFinal;
     });
 }
 
-// Função para atualizar a curiosidade na coluna direita (REMOVIDA)
+// Função para atualizar a curiosidade na coluna direita (AGORA REMOVIDA - já está no card)
 function atualizarCuriosidade(nome, curiosidade) {
     // Não é mais usada
 }
 
 // ===== LÓGICA DO JOGO/EASTER EGG =====
+
 let estadoHistoria = {
     codigoResgatado: false,
     senhaAdminAtiva: false,
@@ -96,13 +113,13 @@ function clicarJacare(nome) {
     if (!estadoHistoria.codigoResgatado) return;
 
     mostrarDialogo(
-        "../images/mascotes/nino.png", 
+        "../imagens/mascotes/nino.png", 
         ["🐊 Nino: 'Desde a última vez, estou tentando manter a calma... Não posso... Perder...'"]
     );
 
-    document.getElementById('jacare_do_pantanal_senha').style.display = 'flex';
-    document.getElementById('jacare_do_pantanal_senha').style.justifyContent = 'center';
-    document.getElementById('jacare_do_pantanal_senha').style.alignItems = 'center';
+    document.getElementById('tela-jacare-senha').style.display = 'flex';
+    document.getElementById('tela-jacare-senha').style.justifyContent = 'center';
+    document.getElementById('tela-jacare-senha').style.alignItems = 'center';
     document.getElementById('senha-descoberta').innerText = estadoHistoria.senhaDescoberta;
 }
 
@@ -121,16 +138,16 @@ function verificarSenha() {
         // Mostrar o Dani com diálogo após 0.8 segundos
         setTimeout(() => {
             mostrarDialogo(
-                "../images/mascotes/dani.png", 
+                "../imagens/mascotes/dani.png", 
                 ["🐸 Dani: 'Como essa página está fazendo isso!'", "Será que o Bibo..."],
                 "<div style='color:#FFD700; font-size:18px; font-weight:bold;'>✨ Os vaga-lumes formaram a palavra: <strong>SAPO</strong> ✨</div>"
             );
         }, 800);
 
-        // Expulsar em 4 segundos (com reset da área de senha)
+        // Expulsar em 4 segundos
         setTimeout(() => {
             document.getElementById('tela-sapo').style.display = 'none';
-            
+
             // Resetar a área da senha
             document.getElementById('admin-senha').value = "";
             document.getElementById('admin-msg').innerHTML = "";
@@ -163,13 +180,13 @@ function verificar404() {
         document.getElementById('tela-404').style.display = 'none';
         
         mostrarDialogo(
-            "../images/mascotes/titu.png", 
+            "../imagens/mascotes/titu.png", 
             ["🐸 Titu: 'Será que o Bibo...'"]
         );
 
         setTimeout(() => {
             mostrarDialogo(
-                "../images/mascotes/dani.png", 
+                "../imagens/mascotes/dani.png", 
                 ["🐸 Dani: 'Nós...'"]
             );
         }, 2000);
@@ -329,6 +346,9 @@ function mostrarDialogo(personagemSrc, falas, informacaoExtra = "") {
 
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicia a música calma
+    tocarMusicaCalma();
+
     criarCards('mamiferos', 'container-mamiferos');
     criarCards('aves', 'container-aves');
     criarCards('repteis', 'container-repteis');
@@ -351,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mostrar a área da senha apenas quando o jogador descobrir a senha do jacaré
     document.querySelector('.nav-link[data-target="sobre"]').addEventListener('click', function() {
-        if (estadoHistoria.senhaAdminAtiva || estadoHistoria.codigoResgatado) {
+        if (estadoHistoria.codigoResgatado || estadoHistoria.senhaAdminAtiva) {
             document.getElementById('admin-area').style.display = 'block';
         } else {
             document.getElementById('admin-area').style.display = 'none';
@@ -361,9 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão Backup
     const btnBackup = document.getElementById('btn-backup');
     btnBackup.addEventListener('click', function() {
+        tocarMusicaCalma();
         document.getElementById('tela-final').style.display = 'block';
         mostrarDialogo(
-            "../images/mascotes/dani.png", 
+            "../imagens/mascotes/dani.png", 
             ["🐸🐸🐸 DANI LOUCO COM O SAPO BIBO AO REDOR! 🐸🐸🐸"]
         );
         setTimeout(() => {
