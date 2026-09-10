@@ -574,12 +574,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== BOTÃO BACKUP (CORRIGIDO) =====
+    // ===== BOTÃO BACKUP (CORRIGIDO - display flex) =====
     const btnBackup = document.getElementById('btn-backup');
     if (btnBackup) {
         btnBackup.addEventListener('click', function() {
             tocarMusicaCalma();
-            document.getElementById('tela-final').style.display = 'block';
+            document.getElementById('tela-final').style.display = 'flex'; // <-- flex para centralizar
 
             // Esconde a tela final depois de 5 segundos
             setTimeout(() => {
