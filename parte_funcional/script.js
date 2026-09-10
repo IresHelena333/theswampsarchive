@@ -220,12 +220,12 @@ function verificarSenha() {
             );
         }, 3000);
 
-        // EXPULSÃO EM 12 SEGUNDOS (fecha tudo)
+        // EXPULSÃO EM 8 SEGUNDOS (fecha tudo)
         setTimeout(() => {
             document.getElementById('tela-sapo').style.display = 'none';
             document.getElementById('vaga-lumes-texto').style.display = 'none';
             document.getElementById('dialogo-box').style.display = 'none';
-        }, 12000);
+        }, 8000);
     } else {
         msg.innerHTML = "Senha incorreta.";
         msg.style.color = "#c62828";
