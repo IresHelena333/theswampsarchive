@@ -1,4 +1,31 @@
-// Função para gerar nome de arquivo a partir do nome do animal
+// ===== FUNÇÕES DE ÁUDIO (Com proteção) =====
+function tocarMusicaCalma() {
+    const musicaCalma = document.getElementById('musica-calma');
+    const musicaTensa = document.getElementById('musica-tensa');
+    
+    if (musicaTensa) {
+        musicaTensa.pause();
+        musicaTensa.currentTime = 0;
+    }
+    if (musicaCalma) {
+        musicaCalma.play().catch(() => {});
+    }
+}
+
+function tocarMusicaTensa() {
+    const musicaCalma = document.getElementById('musica-calma');
+    const musicaTensa = document.getElementById('musica-tensa');
+    
+    if (musicaCalma) {
+        musicaCalma.pause();
+        musicaCalma.currentTime = 0;
+    }
+    if (musicaTensa) {
+        musicaTensa.play().catch(() => {});
+    }
+}
+
+// ===== CRIAÇÃO DOS CARDS =====
 function gerarNomeImagem(nomeAnimal) {
     return nomeAnimal
         .normalize('NFD')
@@ -7,20 +34,30 @@ function gerarNomeImagem(nomeAnimal) {
         .replace(/\s+/g, '_') + '.jpg';
 }
 
-// Cria os cards
 function criarCards(categoria, containerId) {
     const container = document.getElementById(containerId);
     const animais = dadosAnimais[categoria];
     
-    const pasta = (categoria === 'mamiferos') ? 'images/mamifero' : (categoria === 'aves' ? 'images/aves' : 'imagens/repteis_anfibios');
+    // Caminhos corretos (com acentos!)
+    const pasta = (categoria === 'mamiferos') ? '../imagens/mamífero' : (categoria === 'aves' ? '../imagens/aves' : '../imagens/répteis_anfíbios');
 
     animais.forEach((animal) => {
-        const nomeImagem = gerarNomeImagem(animal.nome);
+        // Verifica se a imagem tem nome personalizado no dados.js, senão gera automaticamente
+        const nomeImagem = animal.imagem || gerarNomeImagem(animal.nome);
         const caminho = pasta + '/' + nomeImagem;
         
         const imgHTML = `<img src="${caminho}" alt="${animal.nome}" onerror="this.parentElement.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; background:#d4d9bd; color:#3d4d36; font-weight:bold;\'>Imagem em breve</div>'">`;
 
-        // Define o ícone da categoria (carne, pena ou ovo)
+        // Lógica do Jacaré
+        let extraOnClick = "";
+        if (categoria === 'repteis' && animal.nome.toLowerCase().includes('jacaré')) {
+            extraOnClick = ` onclick="clicarJacare('${animal.nome}')"`;
+        }
+
+        // Lógica do Sapo Cururu
+        let textoHTML = `<p>${animal.texto}</p>`;
+
+        // Ícone da categoria
         let iconeCategoria = '';
         if (categoria === 'mamiferos') {
             iconeCategoria = `<img src="../imagens/decoração/carne_icon.png" class="icone-animal">`;
@@ -30,15 +67,8 @@ function criarCards(categoria, containerId) {
             iconeCategoria = `<img src="../imagens/decoração/ovo_icon.png" class="icone-animal">`;
         }
 
-        let textoHTML = `<p>${animal.texto}</p>`;
-        if (categoria === 'repteis' && animal.nome.toLowerCase().includes('sapo cururu')) {
-            textoHTML = `
-                <p>${animal.texto.replace('servem de alimento para muitos animais', '<a href="#" id="link-sapo" style="cursor:pointer; color:#0056b3; text-decoration:underline; font-weight:bold;" onclick="event.preventDefault(); irPara404();">servem de alimento para muitos animais</a>')}</p>
-            `;
-        }
-
         const card = `
-            <div class="card-animal-completo">
+            <div class="card-animal-completo" ${extraOnClick}>
                 <div class="foto-col">
                     <div class="card-imagem">${imgHTML}</div>
                 </div>
@@ -61,39 +91,29 @@ function criarCards(categoria, containerId) {
             </div>
         `;
 
-        // ===== Lógica do Jacaré (CLIQUE apenas na imagem) =====
-        let jacareOnClick = "";
-        if (categoria === 'repteis' && animal.nome.toLowerCase().includes('jacaré')) {
-            jacareOnClick = `onclick="clicarJacare('${animal.nome}')"`;
-        }
-        // Substitui o onclick da imagem
-        const cardFinal = card.replace('<div class="card-imagem">', `<div class="card-imagem" ${jacareOnClick}>`);
-
-        // Adiciona um padrão de decoração aleatório (sem repetir)
+        // Adiciona padrões de decoração aos cards
         const padroes = ['card-padrao-1', 'card-padrao-2', 'card-padrao-3', 'card-padrao-4', 'card-padrao-5'];
         const padraoAleatorio = padroes[Math.floor(Math.random() * padroes.length)];
-        card.classList.add(padraoAleatorio);
+        
+        const temp = document.createElement('div');
+        temp.innerHTML = card.trim();
+        const cardElement = temp.firstElementChild;
 
-        // Insere o card no container
-        container.innerHTML += cardFinal;
+        if (cardElement) {
+            cardElement.classList.add(padraoAleatorio);
+            container.appendChild(cardElement);
+        }
     });
 }
 
-// Função para atualizar a curiosidade na coluna direita (AGORA REMOVIDA - já está no card)
-function atualizarCuriosidade(nome, curiosidade) {
-    // Não é mais usada
-}
-
-// ===== LÓGICA DO JOGO/EASTER EGG =====
-
+// ===== LÓGICA DO JOGO / EASTER EGGS =====
 let estadoHistoria = {
     codigoResgatado: false,
     senhaAdminAtiva: false,
-    senhaDescoberta: "5219",
-    sapoAtivado: false,
+    clicouJacare: false,
+    senhaDescoberta: "5219"
 };
 
-// Função da Loja (Código promocional)
 function verificarCodigo() {
     const input = document.getElementById('codigo-promo').value.trim();
     const msg = document.getElementById('promo-msg');
@@ -108,105 +128,153 @@ function verificarCodigo() {
     }
 }
 
-// Função do Jacaré específico (Répteis)
 function clicarJacare(nome) {
     if (!estadoHistoria.codigoResgatado) return;
 
-    mostrarDialogo(
-        "../imagens/mascotes/nino.png", 
-        ["🐊 Nino: 'Desde a última vez, estou tentando manter a calma... Não posso... Perder...'"]
-    );
+    // MOSTRA A SENHA PRIMEIRO
+    const telaSenha = document.getElementById('tela-jacare-senha');
+    if (telaSenha) {
+        telaSenha.style.display = 'flex';
+        telaSenha.style.justifyContent = 'center';
+        telaSenha.style.alignItems = 'center';
+        document.getElementById('senha-descoberta').innerText = estadoHistoria.senhaDescoberta;
+    }
 
-    document.getElementById('tela-jacare-senha').style.display = 'flex';
-    document.getElementById('tela-jacare-senha').style.justifyContent = 'center';
-    document.getElementById('tela-jacare-senha').style.alignItems = 'center';
-    document.getElementById('senha-descoberta').innerText = estadoHistoria.senhaDescoberta;
+    // Desabilita o botão Fechar
+    const botaoFechar = document.querySelector('#tela-jacare-senha button');
+    if (botaoFechar) {
+        botaoFechar.disabled = true;
+    }
+
+    // A fala do Nino aparece 500ms depois (com o botão desabilitado)
+    setTimeout(() => {
+        mostrarDialogo(
+            "../imagens/mascotes/nino.png", 
+            ["Nino: 'Desde a última vez, estou tentando manter a calma... Não posso... Perder...'"],
+            "",
+            () => {
+                // Habilita o botão Fechar quando a fala termina
+                const botaoFechar = document.querySelector('#tela-jacare-senha button');
+                if (botaoFechar) {
+                    botaoFechar.disabled = false;
+                }
+            }
+        );
+    }, 500);
 }
 
-// Função da Senha (Sobre Nós)
+function fecharTelaSenha() {
+    document.getElementById('tela-jacare-senha').style.display = 'none';
+}
+
 function verificarSenha() {
     const input = document.getElementById('admin-senha').value.trim();
     const msg = document.getElementById('admin-msg');
 
-    if (input === "5219") {
-        document.getElementById('tela-sapo').style.display = 'flex';
-        document.getElementById('tela-sapo').style.justifyContent = 'center';
-        document.getElementById('tela-sapo').style.alignItems = 'center';
+    if (input === estadoHistoria.senhaDescoberta) {
+        estadoHistoria.senhaAdminAtiva = true;
+        msg.innerHTML = "✅ Senha correta! Os vaga-lumes começam a brilhar...";
+        msg.style.color = "#2e7d32";
 
+        // MOSTRA O POP-UP DO SAPO
+        const telaSapo = document.getElementById('tela-sapo');
+        if (telaSapo) {
+            telaSapo.style.display = 'flex';
+        }
+
+        // INICIALIZA O CANVAS
         inicializarCanvasSapo();
 
-        // Mostrar o Dani com diálogo após 0.8 segundos
+        // MOSTRA O TEXTO DOS VAGALUMES (PRIMEIRO - 1 segundo)
+        setTimeout(() => {
+            const vagaLumes = document.getElementById('vaga-lumes-texto');
+            if (vagaLumes) {
+                vagaLumes.innerHTML = "✨ Os vaga-lumes formaram a palavra: <strong>SAPO</strong> ✨";
+                vagaLumes.style.display = 'block';
+            }
+        }, 1000);
+
+        // MOSTRA A FALA DO DANI (DEPOIS DO TEXTO - 3 segundos)
+        // Aqui usamos a MESMA função mostrarDialogo() do Nino, para o design ser idêntico
         setTimeout(() => {
             mostrarDialogo(
-                "../imagens/mascotes/dani.png", 
-                ["🐸 Dani: 'Como essa página está fazendo isso!'", "Será que o Bibo..."],
-                "<div style='color:#FFD700; font-size:18px; font-weight:bold;'>✨ Os vaga-lumes formaram a palavra: <strong>SAPO</strong> ✨</div>"
-            );
-        }, 800);
+                "../imagens/mascotes/Dani.png", 
+                ["Dani: 'Como essa página está fazendo isso!'", "Será que o Bibo..."],
+                );
+        }, 3000);
 
-        // Expulsar em 4 segundos
+        // EXPULSÃO EM 12 SEGUNDOS (fecha tudo)
         setTimeout(() => {
             document.getElementById('tela-sapo').style.display = 'none';
-
-            // Resetar a área da senha
-            document.getElementById('admin-senha').value = "";
-            document.getElementById('admin-msg').innerHTML = "";
-            document.getElementById('admin-area').style.display = 'none';
-            document.getElementById('btn-backup').style.display = 'none';
-
-            // Ir para os répteis
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.querySelector('.nav-link[data-target="repteis"]').classList.add('active');
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
-            document.getElementById('repteis').classList.add('active-section');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 4000);
+            document.getElementById('dani-dialogo').style.display = 'none';
+            document.getElementById('vaga-lumes-texto').style.display = 'none';
+            document.getElementById('dialogo-box').style.display = 'none';
+        }, 12000);
     } else {
         msg.innerHTML = "❌ Senha incorreta.";
         msg.style.color = "#c62828";
     }
 }
 
-// Função para ir ao 404
 function irPara404() {
-    document.getElementById('tela-404').style.display = 'block';
+    const tela404 = document.getElementById('tela-404');
+    tela404.style.display = 'block';
+
+    // 1. Titu aparece assim que a tela 404 é exibida
+    mostrarDialogo(
+        "../imagens/mascotes/Titu.png",
+        ["Titu: 'Será que o Bibo...'"],
+        ""
+    );
+
+    // 2. Dani aparece 4 segundos depois
+    setTimeout(() => {
+        mostrarDialogo(
+            "../imagens/mascotes/Dani.png",
+            ["Dani: 'Nós...'"],
+            ""
+        );
+    }, 4000);
 }
 
-// Função para verificar a palavra no 404
 function verificar404() {
     const input = document.getElementById('input-404').value.trim();
 
     if (input.toLowerCase() === 'sapo') {
-        document.getElementById('tela-404').style.display = 'none';
-        
-        mostrarDialogo(
-            "../imagens/mascotes/titu.png", 
-            ["🐸 Titu: 'Será que o Bibo...'"]
-        );
+        // Esconde input e botão
+        document.getElementById('input-404').style.display = 'none';
+        document.querySelector('#tela-404 button').style.display = 'none';
 
-        setTimeout(() => {
-            mostrarDialogo(
-                "../imagens/mascotes/dani.png", 
-                ["🐸 Dani: 'Nós...'"]
-            );
-        }, 2000);
-        
-        // Resetar a história após os diálogos
-        setTimeout(() => {
-            resetarHistoria();
-        }, 4000);
+        // 1. Titu aparece primeiro
+        //    Quando o Titu terminar de falar, o callback chama o Dani
+        mostrarDialogo(
+            "../imagens/mascotes/Titu.png",
+            ["Titu: 'Será que o Bibo...'"],
+            "",
+            () => {
+                // 2. Dani aparece SÓ DEPOIS que o Titu terminar
+                mostrarDialogo(
+                    "../imagens/mascotes/Dani.png",
+                    ["Dani: 'Nós...'"],
+                    "",
+                    () => {
+                        // 3. Só recarrega DEPOIS que o Dani terminar
+                        window.location.reload();
+                    }
+                );
+            }
+        );
     } else {
         alert("Palavra incorreta!");
     }
 }
 
-// Função para resetar a história ao voltar ao início
 function resetarHistoria() {
     estadoHistoria = {
         codigoResgatado: false,
         senhaAdminAtiva: false,
-        senhaDescoberta: "5219",
-        sapoAtivado: false,
+        clicouJacare: false,
+        senhaDescoberta: "5219"
     };
 
     document.getElementById('codigo-promo').value = "";
@@ -214,18 +282,23 @@ function resetarHistoria() {
     document.getElementById('promo-msg').innerHTML = "";
     document.getElementById('admin-msg').innerHTML = "";
     document.getElementById('btn-backup').style.display = 'none';
-    document.getElementById('admin-area').style.display = 'none';
+
+    // ESCONDE O DANI E O POP-UP
+    document.getElementById('dani-dialogo').style.display = 'none';
+    document.getElementById('tela-sapo').style.display = 'none';
+    document.getElementById('vaga-lumes-texto').style.display = 'none';
+    document.getElementById('dialogo-box').style.display = 'none';
 
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     document.querySelector('.nav-link[data-target="mamiferos"]').classList.add('active');
     document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
     document.getElementById('mamiferos').classList.add('active-section');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Função para desenhar a palavra SAPO com vaga-lumes no canvas
 function inicializarCanvasSapo() {
     const canvas = document.getElementById("canvas-sapo");
+    if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
 
     function ajustarTela() {
@@ -295,15 +368,19 @@ function inicializarCanvasSapo() {
     animar();
 }
 
-// Função para exibir um diálogo com personagem e fala digitando gradativamente
-function mostrarDialogo(personagemSrc, falas, informacaoExtra = "") {
+function mostrarDialogo(personagemSrc, falas, informacaoExtra = "", aoTerminar = null) {
     const box = document.getElementById('dialogo-box');
+    if (!box) return;
+
     const textoEl = document.getElementById('dialogo-texto');
     const personagemEl = document.getElementById('dialogo-personagem');
     const extraEl = document.getElementById('dialogo-extra');
 
+    // Seta a imagem e garante que está visível
     personagemEl.src = personagemSrc;
     personagemEl.style.display = 'block';
+    personagemEl.style.visibility = 'visible';
+    personagemEl.style.opacity = '1';
 
     if (informacaoExtra) {
         extraEl.innerHTML = informacaoExtra;
@@ -335,6 +412,10 @@ function mostrarDialogo(personagemSrc, falas, informacaoExtra = "") {
                 } else {
                     setTimeout(() => {
                         box.style.display = 'none';
+                        
+                        if (aoTerminar) {
+                            aoTerminar();
+                        }
                     }, 1500);
                 }
             }
@@ -346,13 +427,15 @@ function mostrarDialogo(personagemSrc, falas, informacaoExtra = "") {
 
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicia a música calma
+    // ===== 1. INICIA A MÚSICA CALMA =====
     tocarMusicaCalma();
 
+    // ===== 2. CRIA OS CARDS =====
     criarCards('mamiferos', 'container-mamiferos');
     criarCards('aves', 'container-aves');
     criarCards('repteis', 'container-repteis');
 
+    // ===== 3. NAVEGAÇÃO ENTRE AS ABAS =====
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.content-section');
 
@@ -361,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
-            
+
             const targetId = this.getAttribute('data-target');
             sections.forEach(section => section.classList.remove('active-section'));
             document.getElementById(targetId).classList.add('active-section');
@@ -369,26 +452,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mostrar a área da senha apenas quando o jogador descobrir a senha do jacaré
-    document.querySelector('.nav-link[data-target="sobre"]').addEventListener('click', function() {
-        if (estadoHistoria.codigoResgatado || estadoHistoria.senhaAdminAtiva) {
-            document.getElementById('admin-area').style.display = 'block';
-        } else {
-            document.getElementById('admin-area').style.display = 'none';
-        }
-    });
+    // ===== 4. MOSTRAR A ÁREA DE SENHA (SOBRE NÓS) =====
+    const sobreLink = document.querySelector('.nav-link[data-target="sobre"]');
+    if (sobreLink) {
+        sobreLink.addEventListener('click', function() {
+            if (estadoHistoria.senhaAdminAtiva || estadoHistoria.codigoResgatado) {
+                document.getElementById('admin-area').style.display = 'block';
+            } else {
+                document.getElementById('admin-area').style.display = 'none';
+            }
+        });
+    }
 
-    // Botão Backup
+    // ===== 5. BOTÃO BACKUP =====
     const btnBackup = document.getElementById('btn-backup');
-    btnBackup.addEventListener('click', function() {
-        tocarMusicaCalma();
-        document.getElementById('tela-final').style.display = 'block';
-        mostrarDialogo(
-            "../imagens/mascotes/dani.png", 
-            ["🐸🐸🐸 DANI LOUCO COM O SAPO BIBO AO REDOR! 🐸🐸🐸"]
-        );
-        setTimeout(() => {
-            document.getElementById('tela-final').style.display = 'none';
-        }, 6300);
-    });
+    if (btnBackup) {
+        btnBackup.addEventListener('click', function() {
+            tocarMusicaCalma();
+            document.getElementById('tela-final').style.display = 'block';
+            mostrarDialogo(
+                "../imagens/mascotes/dani.png",
+                ["🐸🐸🐸 DANI LOUCO COM O SAPO BIBO AO REDOR! 🐸🐸🐸"]
+            );
+            setTimeout(() => {
+                document.getElementById('tela-final').style.display = 'none';
+            }, 6300);
+        });
+    }
+
+    // ===== 6. GARANTE QUE A PÁGINA INICIE NO TOPO E NA ABA DOS MAMÍFEROS =====
+    // (Isso é executado sempre que a página é carregada ou recarregada)
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Ativa a aba dos mamíferos
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelector('.nav-link[data-target="mamiferos"]').classList.add('active');
+    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
+    document.getElementById('mamiferos').classList.add('active-section');
 });

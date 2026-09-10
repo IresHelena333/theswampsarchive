@@ -222,7 +222,7 @@ const dadosAnimais = {
         { 
             nome: "Choró-do-pantanal", 
             nomeCientifico: "Cercomacra melanaria",
-            imagem: "choró_do_pantanal.jpg",
+            imagem: "choro_do_pantanal.jpg",
             texto: "O choró-do-pantanal é uma pequena ave que vive escondida entre a vegetação densa. É encontrado principalmente em brejos com arbustos e matas de galeria alagadas. Alimenta-se de pequenos insetos e larvas que captura entre as folhas.",
             curiosidade: "O choró-do-pantanal é uma ave extremamente territorial e seu canto é um dos sons mais característicos dos brejos do Pantanal. Ele costuma viver em casais e se esconde entre a vegetação rasteira."
         },
@@ -351,7 +351,7 @@ const dadosAnimais = {
             nome: "Sapo-cururu", 
             nomeCientifico: "Rhinella diptycha",
             imagem: "sapo_cururu.jpg",
-            texto: "O sapo-cururu é um anfíbio terrestre bastante adaptável e pode ser encontrado tanto em áreas naturais quanto próximas de habitações. Vive em locais úmidos, margens de rios e ambientes terrestres. Alimenta-se principalmente de insetos, mas também pode capturar aranhas, escorpiões e lesmas. SERVEM DE ALIMENTO PARA MUITOS ANIMAIS.",
+            texto: "O sapo-cururu é um anfíbio terrestre bastante adaptável e pode ser encontrado tanto em áreas naturais quanto próximas de habitações. Vive em locais úmidos, margens de rios e ambientes terrestres. Alimenta-se principalmente de insetos, mas também pode capturar aranhas, escorpiões e lesmas. <a href='#' id='link-sapo' style='cursor:pointer; color:#0056b3; text-decoration:underline; font-weight:bold;' onclick='event.preventDefault(); irPara404();'>SERVEM DE ALIMENTO PARA MUITOS ANIMAIS</a>.",
             curiosidade: "O sapo-cururu é um dos anfíbios mais comuns do Brasil. Ele possui glândulas de veneno na cabeça e nas costas que secretam uma substância tóxica quando ameaçado. Apesar disso, ele é inofensivo para os humanos, a menos que o veneno entre em contato com as mucosas."
         },
         { 
@@ -378,7 +378,7 @@ const dadosAnimais = {
         { 
             nome: "Cobra-d'água", 
             nomeCientifico: "Helicops leopoldina",
-            imagem: "cobra_dagua.jpg",
+            imagem: "cobra_d'agua.jpg",
             texto: "A cobra-d'água é uma serpente adaptada à vida em ambientes de água doce e possui grande habilidade para nadar. Vive em rios, corixos e outros ambientes aquáticos. Alimenta-se principalmente de pequenos peixes, girinos e rãs.",
             curiosidade: "A cobra-d'água é uma excelente nadadora e caçadora aquática. Ela pode ficar submersa por longos períodos e usa sua visão e olfato para localizar presas na água."
         },
@@ -392,7 +392,7 @@ const dadosAnimais = {
         { 
             nome: "Lagarto-de-parede / Taruíra", 
             nomeCientifico: "Hemidactylus mabouia",
-            imagem: "taruíra.jpg",
+            imagem: "taruira.jpg",
             texto: "O lagarto-de-parede é um pequeno réptil muito adaptado à presença humana e costuma ser visto em paredes e construções. Vive em troncos, rochas e construções. É insetívoro e alimenta-se de mariposas, aranhas, moscas e baratas.",
             curiosidade: "O lagarto-de-parede é um excelente aliado no controle de pragas. Ele possui discos adesivos nas patas que permitem subir em superfícies lisas, como paredes e vidros, e é noturno, saindo para caçar quando o sol se põe."
         },
