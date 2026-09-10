@@ -90,10 +90,10 @@
                             <input type="password" id="admin-senha" placeholder="Digite a senha..." style="width: 100%; max-width: 400px; padding: 12px; border: 2px solid var(--verde-medio); border-radius: 8px; font-size: 16px; background-color: var(--fundo-bege); color: var(--texto-escuro); margin: 10px auto; display: block; font-family: 'Merriweather Sans', sans-serif;">
                             <button onclick="verificarSenha()" style="background-color: var(--verde-medio); color: white; border-radius: 8px; padding: 12px 24px; font-size: 16px; font-weight: bold;">Enviar</button>
                             <p id="admin-msg" style="margin-top: 10px; font-weight: bold;"></p>
-                        </div>
 
-                        <!-- ADIÇÃO: Botão Backup -->
-                        <button id="btn-backup" style="display:none; margin-top:20px; background:#3d4d36; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Backup</button>
+                            <!-- BOTÃO BACKUP (ÚNICO, DENTRO DA ADMIN-AREA) -->
+                            <button id="btn-backup" style="display:none; margin-top:20px; background:#3d4d36; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Backup</button>
+                        </div>
                     </div>
                 </section>
 
@@ -152,8 +152,8 @@
     <!-- FALA DO DANI (MESMO PADRÃO DO NINO, VIA JS) -->
     <div id="dani-dialogo" style="display:none; position:fixed; top:30%; left:50%; transform:translate(-50%, -50%); z-index:10000; align-items:center; gap:20px;"></div>
 
-    <!-- SISTEMA DE DIÁLOGO -->
-    <div id="dialogo-box" style="display:none; position:fixed; top:60%; left:0; width:100%; z-index:9999; padding:20px; pointer-events:none;">
+    <!-- SISTEMA DE DIÁLOGO (z-index CORRIGIDO PARA 10003) -->
+    <div id="dialogo-box" style="display:none; position:fixed; top:60%; left:0; width:100%; z-index:10003; padding:20px; pointer-events:none;">
         <div style="max-width: 1100px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-direction:row-reverse;">
             <!-- Lado Esquerdo: Retângulo com a fala -->
             <div class="dialogo-texto-box" style="background: #1f2e1b; border: 3px solid #6d7f61; border-radius: 15px; padding: 20px; width: 65%; position: relative;">
